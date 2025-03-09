@@ -1,1 +1,11 @@
-
+{
+  "domain": "sunsynk_connect",
+  "name": "Sunsynk Connect",
+  "codeowners": ["@malcernie"],
+  "dependencies": [],
+  "documentation": "https://github.com/malcernie/HomeAssistant_SunSynk_Connect",
+  "issue_tracker": "https://github.com/malcernie/HomeAssistant_SunSynk_Connect/issues",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "1.0.0"
+}
