@@ -1,4 +1,31 @@
 # Authentication
+Request URL: https://api.sunsynk.net/oauth/token
+
+Request Method: POST
+
+Request Parameters:
+```
+{
+    "areaCode": "sunsynk",
+    "client_id": "csp-web",
+    "grant_type": "password",
+    "password": "[User Password]",
+    "source": "sunsynk",
+    "username": "[User Username]"
+}
+```
+
+Expected Response:
+```
+{
+    "code": 0,
+    "msg": "Success",
+    "data": {
+        "access_token": [TOKEN]
+    },
+    "success": true
+}
+```
 
 # Listing Inverters
 Request URL: https://api.sunsynk.net/api/v1/inverters?page=1&limit=10&total=0&status=-1&sn=&plantId=&type=-2&softVer=&hmiVer=&agentCompanyId=-1&gsn=
