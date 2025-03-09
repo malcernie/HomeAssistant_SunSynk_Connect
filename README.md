@@ -1,3 +1,5 @@
+## DO NOT USE, THIS IS A WORK IN PROGRESS!
+
 # HomeAssistant_SunSynk_Connect
 Unofficial Home Assistant integration to the SunSynk Connect cloud platform.
 
