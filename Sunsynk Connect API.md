@@ -118,7 +118,7 @@ Expected Response:
         "solarSell": "0",
 
         "pvMaxLimit": "3000",
-
+        "energyMode": "1",
         "zeroExportPower": "30",
         "time1on": "true",
         "time2on": "true",
@@ -159,6 +159,9 @@ Expected Response:
 
 
         ** Grid Settings **
+        "gridMode": "0",
+
+        "importPower": "850",
 
 
         ** Auxiliary Load **
@@ -285,7 +288,6 @@ Expected Response:
         "caFwEnable": "0",
         "maxOperatingTimeOfGen": "24",
         "micExportGridOff": "0",
-        "importPower": "850",
         "pvLine": "0",
         "three41": "1",
         "caVwEnable": "0",
@@ -314,11 +316,9 @@ Expected Response:
         "meterSelect": "0",
         "genChargeOn": "0",
         "externalCtRatio": "2000",
-        "gridMode": "0",
         "lowThrough": "50",
         "drmEnable": "0",
         "underFreq1Delay": "0.1",
-        "energyMode": "1",
         "gridPeakShaving": "0",
         "fac": "0",
         "vacLowProtect": "185",
