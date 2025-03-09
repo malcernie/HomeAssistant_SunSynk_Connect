@@ -114,9 +114,9 @@ Expected Response:
 
 
         ** System Mode **
-        "sysWorkMode": "2",
-        "solarSell": "0",
-
+        "sysWorkMode": "2",                           -> sunsynk_{inverterSerialNumber}_work_mode
+        "solarSell": "0",                             -> sunsynk_{inverterSerialNumber}_solar_export
+        "peakAndVallery": "1",                        -> sunsynk_{inverterSerialNumber}_user_timer
         "pvMaxLimit": "3000",
         "energyMode": "1",
         "zeroExportPower": "30",
@@ -344,7 +344,6 @@ Expected Response:
         "genToLoadOn": "0",
         "wattOverWgralFreq": "40",
         "sdBatteryCurrent": "40",
-        "peakAndVallery": "1",
         "underVolt2Delay": "0.1",
         "equChargeTime": "0",
         "gridPeakPower": "8000",
