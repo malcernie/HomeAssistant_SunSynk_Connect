@@ -14,6 +14,7 @@ class SunSynkConnectConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for SunSynkConnect."""
 
     VERSION = 1
+    MINOR_VERSION = 1
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
     async def async_step_user(self, user_input=None):
@@ -26,19 +27,19 @@ class SunSynkConnectConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             password = user_input["password"]
             serial = user_input["serial"]
 
-            # You can optionally validate the credentials here by testing the API.
-            valid = await self._async_validate_credentials(username, password)
-
-            if valid:
+            if (len(username) > 0 AND
+                len(password) > 0 AND
+                len (serial) > 0):
                 return self.async_create_entry(
-                    title=f"SunSynk: {username}",
+                    title=f"SunSynk_Connect: {username}",
                     data=user_input,
                 )
             else:
-                errors["base"] = "auth_failed"
+                errors["base"] = "requires all fields"
 
         return self.async_show_form(
             step_id="user",
             data_schema=DATA_SCHEMA,
             errors=errors
         )
+
