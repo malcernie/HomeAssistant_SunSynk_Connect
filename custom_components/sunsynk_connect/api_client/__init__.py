@@ -84,31 +84,89 @@ class SunsynkConnectApiClient:
         _LOGGER.warning(f'Failed to connect. Timeout of {self._timeout} exceeded.')
         raise TimeoutException()
 
-  async def async_list_inverters(self, account_id):
-    """List inverters"""
+  async def async_api_get(self, url):
     await self.async_refresh_token()
 
     try:
       client = self._create_client_session()
-      url = f'{self._base_url}/inverters'
       payload = { }
       headers = { "Authorization": f"BEARER {self._api_token}" }
       async with client.get(url, json=payload, headers=headers) as client_response:
         client_response_body = await self.__async_read_response__(client_response, url)
-        _LOGGER.debug(f'inverters: {client_response_body}')
+        _LOGGER.debug(f'url: {url}')
+        _LOGGER.debug(f'get: {client_response_body}')
 
         if (client_response_body is not None and 
             "msg" in client_response_body and
             client_response_body["msg"].lower() == 'success' and
-            "data" in client_response_body and 
-            "infos" in client_response_body["data"] and 
-            len(client_response_body["data"]["infos"]) > 0):
-          return client_response_body["data"]["infos"]
+            "data" in client_response_body):
+          return client_response_body["data"]
         else:
-          _LOGGER.error("Failed to retrieve account")
+          _LOGGER.error("Failed to retrieve data")
     
     except TimeoutError:
       _LOGGER.warning(f'Failed to connect. Timeout of {self._timeout} exceeded.')
       raise TimeoutException()
     
+    return None
+
+  async def async_list_inverters(self):
+    """List inverters"""
+    try:
+      url = f'{self._base_url}/inverters'
+      await api_response = await async_api_get(self, url)
+      if (api_response is not None and 
+          "infos" in api_response and 
+          len(api_response["infos"]) > 0):
+        return api_response["infos"]
+      else:
+        _LOGGER.error("Failed to retrieve inverters")
+    return None
+
+  async def async_get_inverter_settings(self, inverter_serial):
+    """Get Inverter Settings"""
+    try:
+      url = f'{self._base_url}/inverter/{inverter_serial}/read'
+      await api_response = await async_api_get(self, url)
+        return api_response
+    return None
+
+  async def async_get_inverter_realtime_output(self, inverter_serial):
+    """Get Inverter Ouput"""
+    try:
+      url = f'{self._base_url}/inverter/{inverter_serial}/realtime/output'
+      await api_response = await async_api_get(self, url)
+        return api_response
+    return None
+
+  async def async_get_inverter_realtime_input(self, inverter_serial):
+    """Get Inverter Input"""
+    try:
+      url = f'{self._base_url}/inverter/{inverter_serial}/realtime/input'
+      await api_response = await async_api_get(self, url)
+        return api_response
+    return None
+
+  async def async_get_inverter_realtime_battery(self, inverter_serial):
+    """Get Inverter Battery"""
+    try:
+      url = f'{self._base_url}/inverter/battery/{inverter_serial}/realtime?sn={inverter_serial}&lan=en'
+      await api_response = await async_api_get(self, url)
+        return api_response
+    return None
+
+  async def async_get_inverter_realtime_grid(self, inverter_serial):
+    """Get Inverter Grid"""
+    try:
+      url = f'{self._base_url}/inverter/grid/{inverter_serial}/realtime?sn={inverter_serial}&lan=en'
+      await api_response = await async_api_get(self, url)
+        return api_response
+    return None
+
+  async def async_get_inverter_realtime_load(self, inverter_serial):
+    """Get Inverter Load"""
+    try:
+      url = f'{self._base_url}/inverter/load/{inverter_serial}/realtime?sn={inverter_serial}&lan=en'
+      await api_response = await async_api_get(self, url)
+        return api_response
     return None
