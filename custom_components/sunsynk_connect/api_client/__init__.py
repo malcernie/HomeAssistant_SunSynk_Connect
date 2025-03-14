@@ -91,9 +91,9 @@ class SunsynkConnectApiClient:
       client = self._create_client_session()
       payload = { }
       headers = { "Authorization": f"Bearer {self._api_token}" }
+      _LOGGER.debug(f'url: {url}')
       async with client.get(url, json=payload, headers=headers) as client_response:
         client_response_body = await self.__async_read_response__(client_response, url)
-        _LOGGER.debug(f'url: {url}')
         _LOGGER.debug(f'get: {client_response_body}')
 
         if (client_response_body is not None and 
@@ -116,10 +116,11 @@ class SunsynkConnectApiClient:
     try:
       client = self._create_client_session()
       headers = { "Authorization": f"Bearer {self._api_token}" }
+      _LOGGER.debug(f'url: {url}')
+      _LOGGER.debug(f'payload: {payload}')
+      return None
       async with client.post(url, json=payload, headers=headers) as client_response:
         client_response_body = await self.__async_read_response__(client_response, url)
-        _LOGGER.debug(f'url: {url}')
-        _LOGGER.debug(f'payload: {payload}')
         _LOGGER.debug(f'post: {client_response_body}')
 
         if (client_response_body is not None and 
