@@ -7,5 +7,6 @@
   "issue_tracker": "https://github.com/malcernie/HomeAssistant_SunSynk_Connect/issues",
   "iot_class": "cloud_polling",
   "requirements": [],
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "config_flow": true
 }
