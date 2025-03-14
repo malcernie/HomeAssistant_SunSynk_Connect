@@ -90,7 +90,7 @@ class SunsynkConnectApiClient:
     try:
       client = self._create_client_session()
       payload = { }
-      headers = { "Authorization": f"BEARER {self._api_token}" }
+      headers = { "Authorization": f"Bearer {self._api_token}" }
       async with client.get(url, json=payload, headers=headers) as client_response:
         client_response_body = await self.__async_read_response__(client_response, url)
         _LOGGER.debug(f'url: {url}')
@@ -110,7 +110,33 @@ class SunsynkConnectApiClient:
     
     return None
 
-  async def async_list_inverters(self):
+  async def async_api_post(self, url, payload):
+    await self.async_refresh_token()
+
+    try:
+      client = self._create_client_session()
+      headers = { "Authorization": f"Bearer {self._api_token}" }
+      async with client.post(url, json=payload, headers=headers) as client_response:
+        client_response_body = await self.__async_read_response__(client_response, url)
+        _LOGGER.debug(f'url: {url}')
+        _LOGGER.debug(f'payload: {payload}')
+        _LOGGER.debug(f'post: {client_response_body}')
+
+        if (client_response_body is not None and 
+            "msg" in client_response_body and
+            client_response_body["msg"].lower() == 'success' and
+            "data" in client_response_body):
+          return client_response_body["data"]
+        else:
+          _LOGGER.error("Failed to retrieve data")
+    
+    except TimeoutError:
+      _LOGGER.warning(f'Failed to connect. Timeout of {self._timeout} exceeded.')
+      raise TimeoutException()
+    
+    return None
+
+async def async_list_inverters(self):
     """List inverters"""
     url = f'{self._base_url}/inverters'
     await api_response = await async_api_get(self, url)
@@ -127,6 +153,14 @@ class SunsynkConnectApiClient:
     url = f'{self._base_url}/inverter/{inverter_serial}/read'
     await api_response = await async_api_get(self, url)
     return api_response
+
+async def async_save_inverter_settings(self, inverter_serial, settings):
+    """Save Inverter Settings"""
+    settings['sn'] = inverter_serial
+    _LOGGER.debug(settings)
+    url = f'{self._base_url}/inverter/{inverter_serial}/set'
+    await api_response = await async_api_post(self, url, settings)
+    return (api_response == None)
 
   async def async_get_inverter_realtime_output(self, inverter_serial):
     """Get Inverter Ouput"""
