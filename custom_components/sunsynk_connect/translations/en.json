@@ -1,0 +1,30 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "If you need help with the configuration have a look here: https://github.com/malcernie/HomeAssistant_SunSynk_Connect",
+        "data": {
+          "username": "Sunsynk Connect Username",
+          "password": "Sunsynk Connect Password"
+        }
+      }
+    },
+    "error": {
+      "auth": "username or password is wrong.",
+      "connection": "Could not connect to Sunsynk Connect, please try again in a while.",
+      "connection_timeout": "Connection timed out, servers might be busy, please try again in a while."
+    },
+    "abort": {
+      "single_instance_allowed": "Only a single instance is allowed."
+    }
+  },
+  "options": {
+    "step": {
+      "user": {
+        "data": {
+          "scan_interval": "Update interval (seconds)"
+        }
+      }
+    }
+  }
+}
