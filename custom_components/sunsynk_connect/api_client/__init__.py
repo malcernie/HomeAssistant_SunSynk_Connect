@@ -112,61 +112,48 @@ class SunsynkConnectApiClient:
 
   async def async_list_inverters(self):
     """List inverters"""
-    try:
-      url = f'{self._base_url}/inverters'
-      await api_response = await async_api_get(self, url)
-      if (api_response is not None and 
-          "infos" in api_response and 
-          len(api_response["infos"]) > 0):
-        return api_response["infos"]
-      else:
-        _LOGGER.error("Failed to retrieve inverters")
+    url = f'{self._base_url}/inverters'
+    await api_response = await async_api_get(self, url)
+    if (api_response is not None and 
+        "infos" in api_response and 
+        len(api_response["infos"]) > 0):
+      return api_response["infos"]
+    else:
+      _LOGGER.error("Failed to retrieve inverters")
     return None
 
   async def async_get_inverter_settings(self, inverter_serial):
     """Get Inverter Settings"""
-    try:
-      url = f'{self._base_url}/inverter/{inverter_serial}/read'
-      await api_response = await async_api_get(self, url)
-        return api_response
-    return None
+    url = f'{self._base_url}/inverter/{inverter_serial}/read'
+    await api_response = await async_api_get(self, url)
+    return api_response
 
   async def async_get_inverter_realtime_output(self, inverter_serial):
     """Get Inverter Ouput"""
-    try:
-      url = f'{self._base_url}/inverter/{inverter_serial}/realtime/output'
-      await api_response = await async_api_get(self, url)
-        return api_response
-    return None
+    url = f'{self._base_url}/inverter/{inverter_serial}/realtime/output'
+    await api_response = await async_api_get(self, url)
+    return api_response
 
   async def async_get_inverter_realtime_input(self, inverter_serial):
     """Get Inverter Input"""
-    try:
-      url = f'{self._base_url}/inverter/{inverter_serial}/realtime/input'
-      await api_response = await async_api_get(self, url)
-        return api_response
-    return None
+    url = f'{self._base_url}/inverter/{inverter_serial}/realtime/input'
+    await api_response = await async_api_get(self, url)
+    return api_response
 
   async def async_get_inverter_realtime_battery(self, inverter_serial):
     """Get Inverter Battery"""
-    try:
-      url = f'{self._base_url}/inverter/battery/{inverter_serial}/realtime?sn={inverter_serial}&lan=en'
-      await api_response = await async_api_get(self, url)
-        return api_response
-    return None
+    url = f'{self._base_url}/inverter/battery/{inverter_serial}/realtime?sn={inverter_serial}&lan=en'
+    await api_response = await async_api_get(self, url)
+    return api_response
 
   async def async_get_inverter_realtime_grid(self, inverter_serial):
     """Get Inverter Grid"""
-    try:
-      url = f'{self._base_url}/inverter/grid/{inverter_serial}/realtime?sn={inverter_serial}&lan=en'
-      await api_response = await async_api_get(self, url)
-        return api_response
-    return None
+    url = f'{self._base_url}/inverter/grid/{inverter_serial}/realtime?sn={inverter_serial}&lan=en'
+    await api_response = await async_api_get(self, url)
+    return api_response
 
   async def async_get_inverter_realtime_load(self, inverter_serial):
     """Get Inverter Load"""
-    try:
-      url = f'{self._base_url}/inverter/load/{inverter_serial}/realtime?sn={inverter_serial}&lan=en'
-      await api_response = await async_api_get(self, url)
-        return api_response
-    return None
+    url = f'{self._base_url}/inverter/load/{inverter_serial}/realtime?sn={inverter_serial}&lan=en'
+    await api_response = await async_api_get(self, url)
+    return api_response
