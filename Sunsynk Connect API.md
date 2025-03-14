@@ -141,9 +141,9 @@ Expected Response:
 
 
         ** System Mode **
-        "sysWorkMode": "2",                           -> sunsynk_{inverterSerialNumber}_work_mode
-        "solarSell": "0",                             -> sunsynk_{inverterSerialNumber}_solar_export
-        "peakAndVallery": "1",                        -> sunsynk_{inverterSerialNumber}_user_timer
+        "sysWorkMode": "2",                           -> sunsynk_inverter_{inverterSerialNumber}_work_mode
+        "solarSell": "0",                             -> sunsynk_inverter_{inverterSerialNumber}_solar_export
+        "peakAndVallery": "1",                        -> sunsynk_inverter_{inverterSerialNumber}_user_timer
         "pvMaxLimit": "3000",
         "energyMode": "1",
         "zeroExportPower": "30",
@@ -567,14 +567,14 @@ Expected Response:
     "data": {
         "vip": [
             {
-                "volt": "238.6",        -> sunsynk_{inverterSerialNumber}_inverter_voltage
-                "current": "9.1",       -> sunsynk_{inverterSerialNumber}_inverter_current
-                "power": -2154          -> sunsynk_{inverterSerialNumber}_inverter_power   [negative when pulling power]
+                "volt": "238.6",        -> sunsynk_inverter_{inverterSerialNumber}_output_voltage
+                "current": "9.1",       -> sunsynk_inverter_{inverterSerialNumber}_output_current
+                "power": -2154          -> sunsynk_inverter_{inverterSerialNumber}_output_power   [negative when pulling power]
             }
         ],
         "pInv": 0,
-        "pac": -2154,                   -> sunsynk_{inverterSerialNumber}_inverter_power   [negative when pulling power]
-        "fac": 49.9                     -> sunsynk_{inverterSerialNumber}_inverter_frequency
+        "pac": -2154,                   -> sunsynk_inverter_{inverterSerialNumber}_output_power   [negative when pulling power]
+        "fac": 49.9                     -> sunsynk_inverter_{inverterSerialNumber}_output_frequency
     },
     "success": true
 }
@@ -602,9 +602,9 @@ Expected Response:
             {
                 "id": null,
                 "pvNo": 1,
-                "vpv": "1.9",                        -> sunsynk_{inverterSerialNumber}_pv1_voltage
-                "ipv": "0.1",                        -> sunsynk_{inverterSerialNumber}_pv1_current
-                "ppv": "0.0",                        -> sunsynk_{inverterSerialNumber}_pv1_power
+                "vpv": "1.9",                        -> sunsynk_inverter_{inverterSerialNumber}_pv1_voltage
+                "ipv": "0.1",                        -> sunsynk_inverter_{inverterSerialNumber}_pv1_current
+                "ppv": "0.0",                        -> sunsynk_inverter_{inverterSerialNumber}_pv1_power
                 "todayPv": "0.0",
                 "sn": "[inverterSerialNumber]",
                 "time": "2025-03-09 00:24:47"
@@ -612,17 +612,17 @@ Expected Response:
             {
                 "id": null,
                 "pvNo": 2,
-                "vpv": "1.6",                        -> sunsynk_{inverterSerialNumber}_pv2_voltage
-                "ipv": "0.0",                        -> sunsynk_{inverterSerialNumber}_pv2_current
-                "ppv": "0.0",                        -> sunsynk_{inverterSerialNumber}_pv2_power
+                "vpv": "1.6",                        -> sunsynk_inverter_{inverterSerialNumber}_pv2_voltage
+                "ipv": "0.0",                        -> sunsynk_inverter_{inverterSerialNumber}_pv2_current
+                "ppv": "0.0",                        -> sunsynk_inverter_{inverterSerialNumber}_pv2_power
                 "todayPv": "0.0",
                 "sn": "[inverterSerialNumber]",
                 "time": "2025-03-09 00:24:47"
             }
         ],
         "mpptIV": [],
-        "etoday": 0.00,                              -> sunsynk_{inverterSerialNumber}_day_pv_energy
-        "etotal": 0.00                               -> sunsynk_{inverterSerialNumber}_total_pv_energy
+        "etoday": 0.00,                              -> sunsynk_inverter_{inverterSerialNumber}_day_pv_energy
+        "etotal": 0.00                               -> sunsynk_inverter_{inverterSerialNumber}_total_pv_energy
     },
     "success": true
 }
@@ -645,28 +645,28 @@ Expected Response:
     "msg": "Success",
     "data": {
         "time": null,
-        "etodayChg": "1.0",        -> sunsynk_{inverterSerialNumber}_day_battery_charge
-        "etodayDischg": "0.0",     -> sunsynk_{inverterSerialNumber}_day_battery_discharge
-        "emonthChg": "78.2",       -> sunsynk_{inverterSerialNumber}_month_battery_charge
-        "emonthDischg": "74.4",    -> sunsynk_{inverterSerialNumber}_month_battery_discharge
-        "eyearChg": "121.5",       -> sunsynk_{inverterSerialNumber}_year_battery_charge
-        "eyearDischg": "113.9",    -> sunsynk_{inverterSerialNumber}_year_battery_discharge
-        "etotalChg": "125.7",      -> sunsynk_{inverterSerialNumber}_total_battery_charge
-        "etotalDischg": "113.9",   -> sunsynk_{inverterSerialNumber}_total_battery_discharge
-        "type": 1,                 -> sunsynk_{inverterSerialNumber}_battery_type [1=Lithium]
-        "power": -2016,            -> sunsynk_{inverterSerialNumber}_battery_power [negative when charging]
-        "capacity": "315.0",       -> sunsynk_{inverterSerialNumber}_battery_capacity
+        "etodayChg": "1.0",        -> sunsynk_inverter_{inverterSerialNumber}_day_battery_charge
+        "etodayDischg": "0.0",     -> sunsynk_inverter_{inverterSerialNumber}_day_battery_discharge
+        "emonthChg": "78.2",       -> sunsynk_inverter_{inverterSerialNumber}_month_battery_charge
+        "emonthDischg": "74.4",    -> sunsynk_inverter_{inverterSerialNumber}_month_battery_discharge
+        "eyearChg": "121.5",       -> sunsynk_inverter_{inverterSerialNumber}_year_battery_charge
+        "eyearDischg": "113.9",    -> sunsynk_inverter_{inverterSerialNumber}_year_battery_discharge
+        "etotalChg": "125.7",      -> sunsynk_inverter_{inverterSerialNumber}_total_battery_charge
+        "etotalDischg": "113.9",   -> sunsynk_inverter_{inverterSerialNumber}_total_battery_discharge
+        "type": 1,                 -> sunsynk_inverter_{inverterSerialNumber}_battery_type [1=Lithium]
+        "power": -2016,            -> sunsynk_inverter_{inverterSerialNumber}_battery_power [negative when charging]
+        "capacity": "315.0",       -> sunsynk_inverter_{inverterSerialNumber}_battery_capacity
         "correctCap": 315,
         "bmsSoc": 58.0,
         "bmsVolt": 53.92,
         "bmsCurrent": 36.0,
         "bmsTemp": 16.7,
-        "current": -37.3,          -> sunsynk_{inverterSerialNumber}_battery_current [negative when charging]
-        "voltage": "54.1",         -> sunsynk_{inverterSerialNumber}_battery_voltage 
-        "temp": "16.7",            -> sunsynk_{inverterSerialNumber}_battery_temperature
-        "soc": "58.0",             -> sunsynk_{inverterSerialNumber}_battery_soc
-        "chargeVolt": 57.6,        -> sunsynk_{inverterSerialNumber}_battery_charge_voltage
-        "dischargeVolt": 0.0,      -> sunsynk_{inverterSerialNumber}_battery_discharge_voltage
+        "current": -37.3,          -> sunsynk_inverter_{inverterSerialNumber}_battery_current [negative when charging]
+        "voltage": "54.1",         -> sunsynk_inverter_{inverterSerialNumber}_battery_voltage 
+        "temp": "16.7",            -> sunsynk_inverter_{inverterSerialNumber}_battery_temperature
+        "soc": "58.0",             -> sunsynk_inverter_{inverterSerialNumber}_battery_soc
+        "chargeVolt": 57.6,        -> sunsynk_inverter_{inverterSerialNumber}_battery_charge_voltage
+        "dischargeVolt": 0.0,      -> sunsynk_inverter_{inverterSerialNumber}_battery_discharge_voltage
         "chargeCurrentLimit": 80.0,
         "dischargeCurrentLimit": 80.0,
         "maxChargeCurrentLimit": 0.0,
@@ -722,21 +722,21 @@ Expected Response:
     "data": {
         "vip": [
             {
-                "volt": "239.2",                                      -> sunsynk_{inverterSerialNumber}_grid_voltage
-                "current": "8.7",                                     -> sunsynk_{inverterSerialNumber}_grid_current
-                "power": 9767    [Grid Power kW, -ve for export]      -> sunsynk_{inverterSerialNumber}_grid_power
+                "volt": "239.2",                                      -> sunsynk_inverter_{inverterSerialNumber}_grid_voltage
+                "current": "8.7",                                     -> sunsynk_inverter_{inverterSerialNumber}_grid_current
+                "power": 9767    [Grid Power kW, -ve for export]      -> sunsynk_inverter_{inverterSerialNumber}_grid_power
             }
         ],
         "pac": 9767,             
         "qac": 0,
-        "fac": 49.96,            [Grid Frequency Hz]                  -> sunsynk_{inverterSerialNumber}_grid_frequency
+        "fac": 49.96,            [Grid Frequency Hz]                  -> sunsynk_inverter_{inverterSerialNumber}_grid_frequency
         "pf": 1.0,
-        "status": 1,                                                  -> sunsynk_{inverterSerialNumber}_grid_connected_stratus
+        "status": 1,                                                  -> sunsynk_inverter_{inverterSerialNumber}_grid_connected_stratus
         "acRealyStatus": 1,
-        "etodayFrom": "4.8",     [Today Import kWh]                   -> sunsynk_{inverterSerialNumber}_day_grid_import
-        "etodayTo": "0.0",       [Today Export kWh]                   -> sunsynk_{inverterSerialNumber}_day_grid_export
-        "etotalFrom": "287.0",   [Total Import kWh]                   -> sunsynk_{inverterSerialNumber}_total_grid_import
-        "etotalTo": "0.0",       [Total Export kWh]                   -> sunsynk_{inverterSerialNumber}_total_grid_export
+        "etodayFrom": "4.8",     [Today Import kWh]                   -> sunsynk_inverter_{inverterSerialNumber}_day_grid_import
+        "etodayTo": "0.0",       [Today Export kWh]                   -> sunsynk_inverter_{inverterSerialNumber}_day_grid_export
+        "etotalFrom": "287.0",   [Total Import kWh]                   -> sunsynk_inverter_{inverterSerialNumber}_total_grid_import
+        "etotalTo": "0.0",       [Total Export kWh]                   -> sunsynk_inverter_{inverterSerialNumber}_total_grid_export
         "limiterPowerArr": [
             9767,
             0
@@ -762,18 +762,18 @@ Expected Response:
     "code": 0,
     "msg": "Success",
     "data": {
-        "totalUsed": 250.60,                -> sunsynk_{inverterSerialNumber}_total_load_energy
-        "dailyUsed": 8.30,                  -> sunsynk_{inverterSerialNumber}_day_load_energy
+        "totalUsed": 250.60,                -> sunsynk_inverter_{inverterSerialNumber}_total_load_energy
+        "dailyUsed": 8.30,                  -> sunsynk_inverter_{inverterSerialNumber}_day_load_energy
         "vip": [
             {
-                "volt": "245.1",            -> sunsynk_{inverterSerialNumber}_load_voltage
-                "current": "0.0",           -> sunsynk_{inverterSerialNumber}_load_current
-                "power": 167                -> sunsynk_{inverterSerialNumber}_load_power
+                "volt": "245.1",            -> sunsynk_inverter_{inverterSerialNumber}_load_voltage
+                "current": "0.0",           -> sunsynk_inverter_{inverterSerialNumber}_load_current
+                "power": 167                -> sunsynk_inverter_{inverterSerialNumber}_load_power
             }
         ],
         "totalPower": 167,
         "smartLoadStatus": -1,
-        "loadFac": 49.9,                    -> sunsynk_{inverterSerialNumber}_load_frequency
+        "loadFac": 49.9,                    -> sunsynk_inverter_{inverterSerialNumber}_load_frequency
         "upsPowerL1": 0.0,
         "upsPowerL2": 0.0,
         "upsPowerL3": 0.0,
