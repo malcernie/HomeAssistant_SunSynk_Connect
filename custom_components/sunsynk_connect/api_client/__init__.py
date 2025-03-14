@@ -102,7 +102,7 @@ class SunsynkConnectApiClient:
             client_response_body["msg"].lower() == 'success' and
             "data" in client_response_body and 
             "infos" in client_response_body["data"] and 
-            client_response_body["data"]["infos"] is not None):
+            len(client_response_body["data"]["infos"]) > 0):
           return client_response_body["data"]["infos"]
         else:
           _LOGGER.error("Failed to retrieve account")
