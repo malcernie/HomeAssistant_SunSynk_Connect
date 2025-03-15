@@ -63,7 +63,7 @@ class SunsynkConnectApiClient:
       try:
       client = self._create_client_session()
         url = f'{self._oauth_url}'
-        payload = { "username": self._username, "password", "password": self._password, "grant_type": "password", client_id: "openapi"  }
+        payload = { "username": self._username, "password": self._password, "grant_type": "password", client_id: "openapi"  }
         headers = { integration_context_header: "refresh-token" }
         async with client.post(url, headers=headers, json=payload) as client_response:
           client_response_body = await self.__async_read_response__(client_response, url)
